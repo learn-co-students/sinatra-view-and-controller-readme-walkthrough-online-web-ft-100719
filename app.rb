@@ -1,16 +1,30 @@
 require_relative 'config/environment'
 
+#these are the controllers
+
+
 class App < Sinatra::Base
   get '/reverse' do
     erb :reverse
   end
 
-  post '/reverse' do
+  post '/reverse' do\
+    puts params["string"]
+    original_string = params["string"]
+    @reversed_string = original_string.reverse
+    puts @reversed_string
     erb :reversed
   end
 
   get '/friends' do
     # Write your code here!
+    
+    @friends = ['Emily Wilding Davison', 'Harriet Tubman', 'Joan of Arc', 'Malala Yousafzai', 'Sojourner Truth']
+    erb :friends
 
+  end
+
+  get '/nothing' do
+    erb :nothing
   end
 end
